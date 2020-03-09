@@ -1,4 +1,4 @@
-.bg-warning{
+.bg{
 	background-image: url("images/godfather.jpg");
 }
 
@@ -15,11 +15,15 @@
 }
 
 #slide-img{
-	max-width: 230px;
-	max-height: 430px;
+	max-width: 240px;
+	max-height: 440px;
 	margin-left: 150px;
 }
 
 #card-header{
 	font-size: 30px;
+}
+
+.card-text{
+	font-size: 18px;
 }

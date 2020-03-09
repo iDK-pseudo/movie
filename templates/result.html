@@ -11,7 +11,7 @@
 	</head>
 
 	<body>
-		<div class = "bg-warning">
+		<div class = "bg">
 			<div class="container">
 				  <div class="row">
 				  	<div class="col-lg" style = "text-align: center">
@@ -44,7 +44,7 @@
 		  			</div>
 		  		</div>
 
-		  		<div id="carouselcontrols" class="carousel slide" data-ride="carousel" style = "height : 400px">
+		  		<div id="carouselcontrols" class="carousel slide" data-ride="carousel" style = "height : 380px">
 				  <div class="carousel-inner" style= "text-align: center">
 				    <div class="carousel-item active">
 				    	<div class = "row">
@@ -61,7 +61,7 @@
 									  <div class="card-body">
 									    <p class="card-text">{{overview[0]}}</p>
 									    {% set item = titles[0] %}
-									    <a href="{{ url_for('result_page',title = item) }}" class="btn btn-success" style ="margin-top:10px">Read More</a>
+									    <a href="{{ url_for('result_page',title = item) }}" class="btn btn-danger" style ="margin-top:10px">Read More</a>
 									  </div>
 									</div>
 								</div>
@@ -86,7 +86,7 @@
 									  <div class="card-body">
 									    <p class="card-text">{{overview[i]}}</p>
 									    {% set item = titles[i] %}
-									    <a href = "{{url_for('result_page',title = item)}}" class="btn btn-success">Read More</a>
+									    <a href = "{{url_for('result_page',title = item)}}" class="btn btn-danger">Read More</a>
 									  </div>
 									</div>
 								</div>
