@@ -1,5 +1,6 @@
 .bg{
-	background-image: url("images/godfather.jpg");
+	background-image: url("images/gardenofwords.jpg");
+	background-size: cover;
 }
 
 .card-img{

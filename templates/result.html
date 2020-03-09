@@ -44,7 +44,7 @@
 		  			</div>
 		  		</div>
 
-		  		<div id="carouselcontrols" class="carousel slide" data-ride="carousel" data-interval="9000" style = "height : 380px">
+		  		<div id="carouselcontrols" class="carousel slide" data-ride="carousel" data-interval="7000" style = "height : 400px">
 		  			<ol class="carousel-indicators">
 					    <li data-target="#carouselcontrols" data-slide-to="0" class="active"></li>
 					    <li data-target="#carouselcontrols" data-slide-to="1"></li>
@@ -66,7 +66,11 @@
 									    	{{titles[0]}}
 									  </div>
 									  <div class="card-body">
+									  	{%if overview[0]|length > 300 %}
+									    <p class="card-text">{{overview[0][:300:]+".."}}</p>
+									    {% else %}
 									    <p class="card-text">{{overview[0]}}</p>
+									    {% endif %}
 									    {% set item = titles[0] %}
 									    <a href="{{ url_for('result_page',title = item) }}" class="btn btn-danger" style ="margin-top:10px">Read More</a>
 									  </div>
@@ -91,7 +95,11 @@
 									    	{{titles[i]}}
 									  </div>
 									  <div class="card-body">
+									    {%if overview[i]|length > 300 %}
+									    <p class="card-text">{{overview[i][:300:]+".."}}</p>
+									    {% else %}
 									    <p class="card-text">{{overview[i]}}</p>
+									    {% endif %}
 									    {% set item = titles[i] %}
 									    <a href = "{{url_for('result_page',title = item)}}" class="btn btn-danger">Read More</a>
 									  </div>
