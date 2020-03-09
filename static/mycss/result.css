@@ -13,3 +13,13 @@
 .subtext{
 	font-family: Didot, serif;
 }
+
+#slide-img{
+	max-width: 230px;
+	max-height: 430px;
+	margin-left: 150px;
+}
+
+#card-header{
+	font-size: 30px;
+}
