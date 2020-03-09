@@ -1,0 +1,15 @@
+.bg-warning{
+	background-image: url("images/godfather.jpg");
+}
+
+.card-img{
+	max-width : 200px;
+}
+
+.card-text{
+	font-family: "Trebuchet MS", Times, serif;
+}
+
+.subtext{
+	font-family: Didot, serif;
+}

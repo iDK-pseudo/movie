@@ -1,0 +1,40 @@
+.col-lg{
+	padding-bottom: 20px;
+	padding-top: 15px;
+}
+
+.m1-1{
+	text-align:center;
+}
+
+.m2-2{
+	text-align: center;
+}
+
+.m3-3{
+	text-align: center;
+}
+
+.dropdown-menu{
+	color :red;
+}
+
+h1{
+	text-decoration: underline;
+	font-size: 60px;
+}
+
+.bg-warning{
+	background-image : url("images/spiritedaway.jpg");
+	background-repeat: no-repeat; 
+	background-position: left-top;
+	background-blend-mode: normal;
+	background-size: cover;
+}
+
+#titles{
+	margin-right: 15px;
+	margin-bottom : 10px;
+	border-width: 3px;
+	font-size: 20px;
+}

@@ -1,0 +1,13 @@
+#header{
+	text-align: center;
+}
+
+.bg{
+	background-image : url("images/bg.jpg");
+	background-size: cover;
+}
+
+.card-img{
+	max-height: 250px;
+	max-width: 180px;
+}

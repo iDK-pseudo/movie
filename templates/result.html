@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Enjoy ! </title>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="static/js/bootstrap.min.js"> </script>
+		<link rel="stylesheet" type="text/css" href="../static/mycss/result.css">
+	</head>
+
+	<body>
+		<div class = "bg-warning">
+			<div class="container">
+				  <div class="row">
+				  	<div class="col-lg" style = "text-align: center">
+				  		<span class="badge badge-danger" style = "font-size:25px;text-decoration: underline;">Movie Finder</span>
+				 	</div>
+				 </div>
+
+		    	<nav class="navbar navbar-expand-lg navbar-light" style = "margin-bottom: 10px">
+					  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					    <span class="navbar-toggler-icon"></span>
+					  </button>
+					  <div class="collapse navbar-collapse" id="navbarNav">
+					    <ul class="navbar-nav">
+					      <li class="nav-item active">
+					        <a class="btn btn-info"  href="{{ url_for('main') }}" style = "margin-right: 5px"> Home </a>
+					      </li>
+					      <li class="nav-item">
+					         <a href="#" class="btn btn-info" role="button" style = "margin-right: 5px">About</a>
+					      </li>
+					      <li class="nav-item">
+					      	<a href="{{ url_for('discover') }}" class="btn btn-info" role="button">Discover</a>
+					      </li>
+					    </ul>
+					  </div>
+				</nav>
+
+		    	<div class="row">
+		  			<div class="col-lg" style = "text-align: center">
+		  			<span class="badge badge-info" style = "font-size: 25px;margin-bottom: 50px;margin-top: 5px;"> Here are the top picks for you in {{genre}} category ! </span>
+		  			</div>
+		  		</div>
+
+		  		{% for i in range(5) %}
+		  		<div class="card mb-3 bg-dark text-white" style="max-width:1200px;opacity : 0.9">
+				  <div class="row no-gutters">
+				    <div class="col-md-4">
+				      <img src="{{images[i]}}" class="card-img">
+				    </div>
+				    <div class="col-md-8">
+				      <div class="card-body">
+				        <h5 class="card-header bg-danger">{{titles[i]}}</h5>
+				        <p class="card-text" style = "margin-top: 5px">{{overview[i]}}</p>
+				        <p class="card-text text-warning"><small class="subtext">Rating : {{ratings[i]}}</small></p>
+				        {% set item = titles[i] %}
+				        <a href="{{url_for('result_page',title = item)}}" type="button" class="btn btn-outline-light">Read More</a>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+		  		{% endfor %}
+			</div>
+		</div>
+	</body>
+</html>
