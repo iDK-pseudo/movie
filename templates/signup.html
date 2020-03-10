@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title> Sign Up ! </title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+ 	<link rel="stylesheet" type="text/css" href="../static/mycss/signup.css">
+	<script src="../static/js/bootstrap.min.js"> </script>
+</head>
+
+<body>
+	<div class = "bg">
+		<div class = "container">
+			<div class = "row" style = "text-align: center">
+				<div class="col-lg">
+			  		<span id = "moviefinder" class="badge badge-danger">Movie Finder</span>
+			  	</div>
+			</div>
+
+			<nav class="navbar navbar-expand-lg navbar-light" style = "margin-bottom: 10px">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				    <span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+				    <ul class="navbar-nav">
+				      <li class="nav-item active">
+				        <a class="btn btn-warning"  href="{{ url_for('main') }}" style = "margin-right: 10px">Home</a>
+				      </li>
+				      <li class="nav-item">
+				         <a href="{{url_for('discover')}}" class="btn btn-warning" role="button"  style = "margin-right: 10px">Suprise Me !</a>
+				      </li>
+				      <li class="nav-item">
+				         <a href="#" class="btn btn-warning" role="button">About</a>
+				      </li>
+				    </ul>
+				</div>
+			</nav>
+
+			<div class = "row">
+				<div class="col" style = "text-align: center">
+					<form>
+					  <div class="form-group" style = "align-content: center">
+					    <label for="formGroupExampleInput">Example label</label>
+					    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input" style = "max-width: 500px;text-align: center">
+					  </div>
+					  <div class="form-group">
+					    <label for="formGroupExampleInput2">Another label</label>
+					    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+					  </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

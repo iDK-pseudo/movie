@@ -1,0 +1,10 @@
+.bg{
+	background-image: url("images/spiritedaway(2).jpg");
+	background-size: cover;
+}	
+
+#moviefinder
+{
+	font-size:50px;
+	text-decoration: underline;
+}
