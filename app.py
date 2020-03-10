@@ -42,8 +42,9 @@ def result(genre):
 	result = cur.fetchone()
 
 	titles,images,year,overview = find_data(result['id'])
+	ratings = extra_details(titles)
 
-	return render_template('result.html',genre = genre.upper(),titles = titles,images= images,year = year,overview=overview)
+	return render_template('result.html',genre = genre.upper(),titles = titles,images= images,year = year,overview=overview,ratings = ratings)
 
 
 @app.route('/result_page/<title>',methods=['GET','POST'])
