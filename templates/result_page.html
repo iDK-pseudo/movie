@@ -18,34 +18,27 @@
 				  	</div>
 				  </div>
 
-				  <div class = "row" style = "margin-top: 20px">
-				  	<div class = "col-3">
-				  		<nav class="navbar navbar-expand-lg navbar-light" style = "margin-bottom: 10px">
-						  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-						    <span class="navbar-toggler-icon"></span>
-						  </button>
-						  <div class="collapse navbar-collapse" id="navbarNav">
-						    <ul class="navbar-nav">
-						      <li class="nav-item active">
-						        <a class="btn btn-dark"  href="{{ url_for('main') }}" style = "margin-right: 5px"> Home </a>
-						      </li>
-						      <li class="nav-item">
-						         <a href="#" class="btn btn-dark" role="button">About</a>
-						      </li>
-						    </ul>
-						  </div>
-						</nav>
-				  	</div>
+			  		<nav class="navbar navbar-expand-lg navbar-light" style = "margin-bottom: 10px">
+					  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					    <span class="navbar-toggler-icon"></span>
+					  </button>
+					  <div class="collapse navbar-collapse" id="navbarNav">
+					    <ul class="navbar-nav">
+					      <li class="nav-item active">
+					        <a class="btn btn-dark"  href="{{ url_for('main') }}" style = "margin-right: 5px"> Home </a>
+					      </li>
+					      <li class="nav-item">
+					         <a href="#" class="btn btn-dark" role="button">About</a>
+					      </li>
+					    </ul>
+					  </div>
+					</nav>
+			  					
+			  		<img src="{{data['image']}}" class="card-img" alt="data['title']" style = "margin-left: 460px;margin-bottom: 15px">
 
-				  	<div class ="col-9" style= "margin-left: 460px">
-				  		<div class="card-self-center">
-							<img src="{{data['image']}}" class="card-img" alt="data['title']">
-						</div>
-				   </div>
-				</div>
 
 				<div class="row" style = "margin-top: 5px;">
-					<div class="col-lg" style = "align-content: center">
+					<div class="col" style = "align-content: center">
 						<div class="card bg-danger text-white" style="text-align: center;">
 							  <div class="card-header" style = "font-size:25px;">
 							    {{data['title']}} ({{data['released'][-4::]}})
@@ -71,9 +64,9 @@
 							    <span id='data-overview' class="badge badge-light text-wrap">{{data['overview']}}</span>
 
 							    {% endif %}
-							   	<span class="badge badge-warning text-wrap" style = "font-size: 20px;margin-bottom: 20px;text-align: left">Writer(s) - {{data['writer']}}</span>
-							   	<span class="badge badge-warning text-wrap" style = "font-size: 20px;text-align: left">Actor(s) - {{data['actors']}}</span>
-							    <p class="card-text"> </p>
+							   	<span class="badge badge-warning text-wrap" style = "font-size: 20px;margin-bottom: 20px">Writer(s) - {{data['writer']}}</span>
+							   	<br>
+							   	<span class="badge badge-warning text-wrap" style = "font-size: 20px">Actor(s) - {{data['actors']}}</span>
 							  </div>
 						</div>
 					</div>
