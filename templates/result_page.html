@@ -39,7 +39,7 @@
 
 				  	<div class ="col-9" style= "margin-left: 460px">
 				  		<div class="card-self-center">
-							<img src="{{data['image']}}" class="card-img" alt="...">
+							<img src="{{data['image']}}" class="card-img" alt="data['title']">
 						</div>
 				   </div>
 				</div>
@@ -52,20 +52,31 @@
 							  </div>
 							  <div class="card-body">
 							    {% if data['director'] == 'N/A' %}
-								<h5 class="card-title"> Written By : {{data['writer']}}</h5>
+								<span class="badge badge-dark text-wrap" style = "font-size: 20px; margin-bottom: 20px;"> Written By : {{data['writer']}}</span>
 								{% else %}
-								<h5 class="card-title"> Director - {{data['director']}}</h5>
+								<span class="badge badge-dark text-wrap" style = "font-size: 20px; margin-bottom: 20px;"> Director - {{data['director']}}</span>
 								{% endif %}
-							    <p class="card-text">{{data['overview']}}</p>
-							   	<p class="card-text" style = "text-align: left">Writer(s) - {{data['writer']}}</p>
-							   	<p class="card-text" style = "text-align: left">Actor(s) - {{data['actors']}}</p>
+
+								<br>
+								{% if data['ratings'] == 'N/A' %}
+							    <span id='data-overview' class="badge badge-dark text-wrap">{{data['overview']}}</span>
+
+							    {% else %}
+
+							    {% for rating in data['ratings'] %}
+							    <span id = "ratings" class="badge badge-warning text-wrap">{{rating['Source']}} : {{rating['Value']}}</span>
+							    {% endfor %}
+							    <br>
+							    <span class="badge badge-dark" style = "font-size: 20px;margin-bottom: 15px;">Overview</span>
+							    <span id='data-overview' class="badge badge-light text-wrap">{{data['overview']}}</span>
+
+							    {% endif %}
+							   	<span class="badge badge-warning text-wrap" style = "font-size: 20px;margin-bottom: 20px;text-align: left">Writer(s) - {{data['writer']}}</span>
+							   	<span class="badge badge-warning text-wrap" style = "font-size: 20px;text-align: left">Actor(s) - {{data['actors']}}</span>
 							    <p class="card-text"> </p>
 							  </div>
 						</div>
 					</div>
-					<!-- <div class = "col-lg">
-						<span id = "title" class="badge badge-warning" style = "font-size: 20px	">{{title}}</span>
-					</div> -->
 				</div>
 			</div>
 		</div>

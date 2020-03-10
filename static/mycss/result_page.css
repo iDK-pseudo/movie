@@ -11,3 +11,14 @@
 	max-height: 250px;
 	max-width: 180px;
 }
+
+
+#data-overview{
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+#ratings{
+	font-size: 20px;
+	margin-bottom: 30px;
+}
