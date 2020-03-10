@@ -43,7 +43,9 @@ def result(genre):
 
 	titles,images,year,overview = find_data(result['id'])
 
-	return render_template('result.html',genre = genre.upper(),titles = titles,images= images,year = year,overview=overview)
+	ratings = extra_details(titles)
+
+	return render_template('result.html',genre = genre.upper(),titles = titles,images= images,year = year,overview=overview,ratings = ratings)
 
 
 @app.route('/result_page/<title>',methods=['GET','POST'])
@@ -90,19 +92,13 @@ def extra_details(titles):
 
 	for t in new_titles:
 		res = requests.get(url+t,headers= {"Accept":"application/json"}).json()
-
-		if(res['Ratings']):
-			ratings.append(res['Ratings'][0]['Value'])
-		else:
-			ratings.append("N/A")
+		ratings.append(res['Ratings'][0]['Value'])
 
 	return ratings
 
 def find_data(id):
 	api_key = "4b4170d57736cacfad0eaba78f8bed58"
-	for i in range(randint(5,10)):
-		year = randint(1999,2019)
-	url = "https://api.themoviedb.org/3/discover/movie?api_key={}&with_genres={}&sort_by=popularity.desc&year={}".format(api_key,id,year)
+	url = "https://api.themoviedb.org/3/discover/movie?api_key={}&with_genres={}&sort_by=popularity.desc".format(api_key,id)
 
 	image_base_url = "https://image.tmdb.org/t/p/w500"
 	res = requests.get(url,headers = {"Accept":"application/json"}).json()
