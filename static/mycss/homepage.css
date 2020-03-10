@@ -19,11 +19,6 @@
 	color :red;
 }
 
-h1{
-	text-decoration: underline;
-	font-size: 60px;
-}
-
 .bg{
 	background-image : url("images/spiritedaway.jpg");
 	background-repeat: no-repeat; 

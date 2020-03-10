@@ -75,7 +75,9 @@ def result_page(title):
 	return render_template('result_page.html',data = data)
 
 
-
+@app.route('/signup',methods=['GET'])
+def signup():
+	return render_template("signup.html")
 
 
 # Functions used
