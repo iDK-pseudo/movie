@@ -54,16 +54,11 @@
 			<div class = "row justify-content-center" style = "text-align: center">
 				
 					<div class = "card bg-danger">	
-						<form method = "POST" action = "{{url_for('check_credentials')}}">
+						<form method = "POST" action = "{{url_for('main')}}">
 						  <div class="form-group">
 						    <span id = "form-component" for = "email" class="badge badge-dark">Enter Email</span> <br>
 						    <input name="email" type="email" class="form-control" id="email" placeholder="Email">
-						  </div>
-
-						 <div class="form-group">
-							 <span id = "form-component" class = "badge badge-dark"> Enter Full Name </span>
-						     <input name="name" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Enter name">				 
-					 	</div>
+						  </div> 
 
 					 	<div class="form-group">
 					      <span id = "form-component"  class = "badge badge-dark"> Enter Username </span>
@@ -74,6 +69,11 @@
 					        <input name="username" type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter username">
 					      </div>
 					    </div>
+
+					    <div class="form-group">
+							 <span id = "form-component" class = "badge badge-dark"> Enter Full Name </span>
+						     <input name="name" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Enter name">				 
+					 	</div>
 
 						  <div class="form-group">
 						    <span id = "form-component" for="password" class="badge badge-dark">Enter password</span>

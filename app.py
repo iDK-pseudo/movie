@@ -5,14 +5,26 @@ from random import randint
 
 app = Flask(__name__)
 
-def connect_db():
+def connect_genre_db():
 	sql= sqlite3.connect("genres.db")
 	sql.row_factory = sqlite3.Row
 	return sql
 
-def get_db():
+def get_genre_db():
 	if not hasattr(g,'sqlite3'):
-		g.sqlite_db=connect_db()
+		g.sqlite_db=connect_genre_db()
+	return g.sqlite_db
+
+
+def connect_userdata_db():
+	sql= sqlite3.connect("userdata.db")
+	sql.row_factory = sqlite3.Row
+	return sql
+
+
+def get_userdata_db():
+	if not hasattr(g,'sqlite3'):
+		g.sqlite_db=connect_userdata_db()
 	return g.sqlite_db
 
 @app.teardown_appcontext
@@ -29,8 +41,26 @@ def close_db(error):
 # HOMEPAGE
 @app.route('/',methods=['GET','POST'])
 def main():
+
 	titles,images = movies_playing()
-	return render_template('homepage.html',titles=titles,images=images)
+
+	if(request.method == "POST"):
+		result = request.form
+
+		email = result['email']
+		name = result['name']
+		username = result['username']
+		password = result['password']
+
+		db = get_userdata_db()
+
+		db.execute("insert into userdata values (?,?,?,?)",[username,email,password,name])
+		db.commit()
+		close_db("done")
+		return render_template("homepage.html",titles=titles,images=images,t=1)
+
+	else:
+		return render_template('homepage.html',titles=titles,images=images,t=0)
 
 
 
@@ -45,7 +75,7 @@ def discover():
 
 @app.route('/result/<genre>',methods=['GET','POST'])
 def result(genre):
-	db = get_db()
+	db = get_genre_db()
 	
 	cur = db.execute("select id from genres where name = (?)",[genre])
 	result = cur.fetchone()
@@ -76,23 +106,7 @@ def result_page(title):
 
 @app.route('/signup',methods=['GET'])
 def signup():
-	return render_template("signup.html")
-
-
-@app.route('/credentials',methods=['GET','POST'])
-def check_credentials():
-
-	if(request.method == "POST"):
-		result = request.form
-
-		email = result['email']
-		name = result['name']
-		username = result['username']
-		password = result['password']
-		
-
-	titles,images = movies_playing()
-	return render_template("homepage.html",titles = titles,images=  images)
+	return render_template("signup.html")	
 
 
 # Functions used
