@@ -1,4 +1,4 @@
-# Project Title
+# Movie Database
 
 A website to gain information about movies in a hasslefree way.
 
@@ -6,7 +6,7 @@ A website to gain information about movies in a hasslefree way.
 
 You need to install Python before starting.
 
-Visit * [Python](https://www.python.org/) to download.
+Visit [Python](https://www.python.org/) to download.
 
 ### Prerequisites
 
