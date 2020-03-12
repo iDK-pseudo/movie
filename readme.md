@@ -1,88 +1,46 @@
 # Project Title
 
-One Paragraph of project description goes here
+A website to gain information about movies in a hasslefree way.
 
-## Getting Started
+### Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+You need to install Python before starting.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+You need to install some python libraries before running this project.
 
 ```
-Give examples
+pip install Flask
+pip install requests
+pip install db-sqlite3
+pip install random2
 ```
-
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+Clone the repository
 
 ```
-Give the example
+git clone "https://github.com/iDK-pseudo/movie.git"
 ```
 
-And repeat
+. Open a terminal which has Python preinstalled.
+. Run this command in the terminal
 
 ```
-until finished
+python app.py
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+* [Flask](https://palletsprojects.com/p/flask/) - The Python Web Framework for Backend
+* [Python](https://www.python.org/) - Language for the code
+* [SQLite3](https://www.sqlite.org/index.html) - Database Management
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Shivam Sharma** - [iDK-pseudo](https://github.com/iDK-pseudo)
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
-
