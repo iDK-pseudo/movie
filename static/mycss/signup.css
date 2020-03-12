@@ -1,4 +1,5 @@
-.bg{
+.bg
+{
 	background-image: url("images/spiritedaway(2).jpg");
 	background-size: cover;
 }	
@@ -7,4 +8,29 @@
 {
 	font-size:50px;
 	text-decoration: underline;
+}
+
+#form-component
+{
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+
+.form-group
+{
+	margin-bottom: 25px;
+}
+
+.card
+{
+	padding-top: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
+	width: 450px;
+}
+
+.toast{
+	position: absolute; 
+	top: 0;
+	right: 0;
 }

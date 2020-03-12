@@ -56,7 +56,6 @@ def result(genre):
 	return render_template('result.html',genre = genre.upper(),titles = titles,images= images,year = year,overview=overview,ratings = ratings)
 
 
-
 # Result Page of Movie
 
 @app.route('/result_page/<title>',methods=['GET','POST'])
@@ -78,6 +77,22 @@ def result_page(title):
 @app.route('/signup',methods=['GET'])
 def signup():
 	return render_template("signup.html")
+
+
+@app.route('/credentials',methods=['GET','POST'])
+def check_credentials():
+
+	if(request.method == "POST"):
+		result = request.form
+
+		email = result['email']
+		name = result['name']
+		username = result['username']
+		password = result['password']
+		
+
+	titles,images = movies_playing()
+	return render_template("homepage.html",titles = titles,images=  images)
 
 
 # Functions used
