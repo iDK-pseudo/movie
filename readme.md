@@ -6,6 +6,8 @@ A website to gain information about movies in a hasslefree way.
 
 You need to install Python before starting.
 
+Visit * [Python](https://www.python.org/) to download.
+
 ### Prerequisites
 
 You need to install some python libraries before running this project.
@@ -24,8 +26,8 @@ Clone the repository
 git clone "https://github.com/iDK-pseudo/movie.git"
 ```
 
-. Open a terminal which has Python preinstalled.
-. Run this command in the terminal
+1. Open a terminal which has Python preinstalled.
+2. Run this command in the terminal
 
 ```
 python app.py
