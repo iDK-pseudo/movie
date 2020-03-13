@@ -2,8 +2,28 @@ from flask import Flask,render_template,g,request
 import sqlite3
 import requests
 from random import randint
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+
 
 app = Flask(__name__)
+
+# app.config.from_pyfile('test.cfg')
+
+db = SQLAlchemy(app)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres+psycopg2://postgres:helloWORLD#@localhost:8000/moviedb'
+
+class moviedb(db.Model):
+	username = db.Column(db.String,unique = True,primary_key=True)
+	name = db.Column(db.String,nullable = False)
+	password = db.Column(db.String,nullable = False)
+	email = db.Column(db.String,nullable = False)
+	joining_date = db.Column(db.DateTime,nullable = False)
+
+	def __repr__(self):
+		return '<User %r>' % self.username
+
 
 def connect_genre_db():
 	sql= sqlite3.connect("genres.db")
@@ -47,20 +67,29 @@ def main():
 	if(request.method == "POST"):
 		result = request.form
 
-		email = result['email']
-		name = result['name']
 		username = result['username']
 		password = result['password']
 
-		db = get_userdata_db()
+		if(len(result)==2):
+			res = moviedb.query.filter(moviedb.username == username).first()
+			if(res is not None and res.password == password):
+				return render_template("homepage.html",titles=titles,images=images,toast = "Hello "+res.name+" !")
+			else:
+				return render_template("homepage.html",titles=titles,images=images,toast = "Entered username or password not found. Please try again !")
 
-		db.execute("insert into userdata values (?,?,?,?)",[username,email,password,name])
-		db.commit()
-		close_db("done")
-		return render_template("homepage.html",titles=titles,images=images,t=1)
+		name = result['name']
+		email = result['email']
+		
+
+		element = moviedb(username = username,email=email,password=password,name=name,joining_date=datetime.today())
+		db.session.add(element)
+		db.session.commit()
+		db.session.close()
+
+		return render_template("homepage.html",titles=titles,images=images,toast="You may login now ! "+name)
 
 	else:
-		return render_template('homepage.html',titles=titles,images=images,t=0)
+		return render_template('homepage.html',titles=titles,images=images,toast=None)
 
 
 

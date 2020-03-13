@@ -13,10 +13,10 @@
 
 	<body>
 
-		{% if t == 1 %}
-		<div id = "toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1200">
+		{% if toast is not none %}
+		<div id = "toast" class="toast bg-danger" role="alert" aria-live="assertive" aria-atomic="true" data-autohide = "true" data-delay="1500">
 		  <div class="toast-header">
-		    <strong class="mr-auto">You May Log In Now !</strong>
+		    <strong class="mr-auto">{{toast}}</strong>
 		  </div>
 		</div>
 		{% endif %}
@@ -40,21 +40,18 @@
 						        <h5 class="modal-title" id="loginform">Enter your credentials</h5>
 						      </div>
 						      <div class="modal-body">
-						        <form>
+						        <form method = 'POST' action = "{{url_for('main')}}">
 								  <div class="form-group">
-								    <label for="exampleInputEmail1">Email address</label>
-								    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-								    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+								    <label for="username">Enter Username</label>
+								    <input type="text" class="form-control" id="username" aria-describedby="username" name="username">
+								    <small id="username" class="form-text text-muted">We'll never share your username with anyone else.</small>
 								  </div>
 								  <div class="form-group">
-								    <label for="exampleInputPassword1">Password</label>
-								    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+								    <label for="password">Password</label>
+								    <input type="password" name="password" class="form-control" id="password">
+								    <input type="submit" value="Log In !" class="btn btn-sm btn-success" style="margin-top: 15px;margin-left:180px">
 								  </div>
 								</form>
-						      </div>
-						      <div class="modal-footer" style = "align-self: center">
-						      	<button type="button" class="btn btn-sm btn-success">Login</button>
-						        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
 						      </div>
 						    </div>
 						  </div>
