@@ -17,6 +17,8 @@ pip install Flask
 pip install requests
 pip install db-sqlite3
 pip install random2
+pip install Flask-SQLAlchemy
+pip install DateTime
 ```
 ### Installing
 
@@ -38,6 +40,8 @@ python app.py
 * [Flask](https://palletsprojects.com/p/flask/) - The Python Web Framework for Backend
 * [Python](https://www.python.org/) - Language for the code
 * [SQLite3](https://www.sqlite.org/index.html) - Database Management
+* [PostgreSQL](https://www.postgresql.org/) - Database Management #2
+
 
 ## Authors
 
