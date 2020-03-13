@@ -41,3 +41,11 @@
 	left:20px;
 	font-size: 22px;
 }
+
+#username-header
+{
+	position: absolute;
+	top:10px;
+	left:10px;
+	font-size: 18px;
+}

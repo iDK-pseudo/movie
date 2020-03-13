@@ -8,11 +8,13 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-# app.config.from_pyfile('test.cfg')
-
 db = SQLAlchemy(app)
 
+
+username = "Guest"
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres+psycopg2://postgres:helloWORLD#@localhost:8000/moviedb'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 class moviedb(db.Model):
 	username = db.Column(db.String,unique = True,primary_key=True)
@@ -35,18 +37,6 @@ def get_genre_db():
 		g.sqlite_db=connect_genre_db()
 	return g.sqlite_db
 
-
-def connect_userdata_db():
-	sql= sqlite3.connect("userdata.db")
-	sql.row_factory = sqlite3.Row
-	return sql
-
-
-def get_userdata_db():
-	if not hasattr(g,'sqlite3'):
-		g.sqlite_db=connect_userdata_db()
-	return g.sqlite_db
-
 @app.teardown_appcontext
 def close_db(error):
 	if hasattr(g,'sqlite_db'):
@@ -64,6 +54,8 @@ def main():
 
 	titles,images = movies_playing()
 
+	global username
+
 	if(request.method == "POST"):
 		result = request.form
 
@@ -73,23 +65,30 @@ def main():
 		if(len(result)==2):
 			res = moviedb.query.filter(moviedb.username == username).first()
 			if(res is not None and res.password == password):
-				return render_template("homepage.html",titles=titles,images=images,toast = "Hello "+res.name+" !")
+				return render_template("homepage.html",titles=titles,images=images,toast = "Hello "+res.name+" !",username=username)
 			else:
-				return render_template("homepage.html",titles=titles,images=images,toast = "Entered username or password not found. Please try again !")
+				username = "Guest"
+				return render_template("homepage.html",titles=titles,images=images,toast = "Entered username or password not found. Please try again !",username = username)
 
-		name = result['name']
-		email = result['email']
-		
+		elif(len(result)==4):
+			name = result['name']
+			email = result['email']
 
-		element = moviedb(username = username,email=email,password=password,name=name,joining_date=datetime.today())
-		db.session.add(element)
-		db.session.commit()
-		db.session.close()
+			username_exists = moviedb.query.filter(moviedb.username.in_([username])).all()
+			email_exists = moviedb.query.filter(moviedb.email.in_([email])).all()
 
-		return render_template("homepage.html",titles=titles,images=images,toast="You may login now ! "+name)
+			if(username_exists or email_exists):
+				return render_template("signup.html",toast = "You are already registered")
+			else:
+				element = moviedb(username = username,email=email,password=password,name=name,joining_date=datetime.today())
+				db.session.add(element)
+				db.session.commit()
+				db.session.close()
+
+				return render_template("homepage.html",titles=titles,images=images,toast="You may login now ! "+name,username = username)
 
 	else:
-		return render_template('homepage.html',titles=titles,images=images,toast=None)
+		return render_template('homepage.html',titles=titles,images=images,toast=None,username = username)
 
 
 
@@ -135,7 +134,7 @@ def result_page(title):
 
 @app.route('/signup',methods=['GET'])
 def signup():
-	return render_template("signup.html")	
+	return render_template("signup.html",toast = None)	
 
 
 # Functions used
