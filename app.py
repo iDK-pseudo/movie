@@ -10,7 +10,6 @@ app = Flask(__name__)
 
 db = SQLAlchemy(app)
 
-
 username = "Guest"
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres+psycopg2://postgres:helloWORLD#@localhost:8000/moviedb'
@@ -65,10 +64,10 @@ def main():
 		if(len(result)==2):
 			res = moviedb.query.filter(moviedb.username == username).first()
 			if(res is not None and res.password == password):
-				return render_template("homepage.html",titles=titles,images=images,toast = "Hello "+res.name+" !",username=username)
+				return render_template("homepage.html",titles=titles,images=images,toast = "Welcome "+res.name+" !",username=username,logout=1)
 			else:
 				username = "Guest"
-				return render_template("homepage.html",titles=titles,images=images,toast = "Entered username or password not found. Please try again !",username = username)
+				return render_template("homepage.html",titles=titles,images=images,toast = "Entered username or password not found. Please try again !",username = username,logout = None)
 
 		elif(len(result)==4):
 			name = result['name']
@@ -77,26 +76,39 @@ def main():
 			username_exists = moviedb.query.filter(moviedb.username.in_([username])).all()
 			email_exists = moviedb.query.filter(moviedb.email.in_([email])).all()
 
-			if(username_exists or email_exists):
-				return render_template("signup.html",toast = "You are already registered")
+			
+			if(not(name and email and username and password)):
+				return render_template("signup.html",toast = "Kindly fill all the fields !")
+
+			elif(len(password)<8):
+				return render_template("signup.html",toast = "The password cannot be less than 8 Characters !")
+
+			elif(email_exists):
+				return render_template("signup.html",toast = "Hmmm Seems like you have already registered. Please head to Home and Login")
+
+			elif(username_exists):
+				return render_template("signup.html",toast = "This username is already taken. Please try and pick another username.")
+			
 			else:
 				element = moviedb(username = username,email=email,password=password,name=name,joining_date=datetime.today())
 				db.session.add(element)
 				db.session.commit()
 				db.session.close()
 
-				return render_template("homepage.html",titles=titles,images=images,toast="You may login now ! "+name,username = username)
+				return render_template("homepage.html",titles=titles,images=images,toast="You may login now ! "+name,username = username,logout = None)
 
 	else:
-		return render_template('homepage.html',titles=titles,images=images,toast=None,username = username)
-
+		if(username == "Guest"):
+			return render_template('homepage.html',titles=titles,images=images,toast=None,username = username,logout = None)
+		else:
+			return render_template('homepage.html',titles=titles,images=images,toast=None,username = username,logout = 1)
 
 
 # Discover/ Suprise Me
 
 @app.route('/discover',methods=['GET','POST'])
 def discover():
-	return render_template('discover.html')
+	return render_template('discover.html',username=username)
 
 
 # Result Page of Discover
@@ -111,7 +123,7 @@ def result(genre):
 	titles,images,year,overview = find_data(result['id'])
 	ratings = extra_details(titles)
 
-	return render_template('result.html',genre = genre.upper(),titles = titles,images= images,year = year,overview=overview,ratings = ratings)
+	return render_template('result.html',genre = genre.upper(),titles = titles,images= images,year = year,overview=overview,ratings = ratings,username = username)
 
 
 # Result Page of Movie
@@ -129,12 +141,19 @@ def result_page(title):
 	image,title,overview,released,writer,director,ratings,actors = find_movie_data(title)
 
 	data = {'image':image,'title':title,'overview':overview,'released':released,'writer':writer,'director':director,'ratings':ratings,'actors':actors}
-	return render_template('result_page.html',data = data)
+	return render_template('result_page.html',data = data,username=username)
 
 
 @app.route('/signup',methods=['GET'])
 def signup():
 	return render_template("signup.html",toast = None)	
+
+@app.route('/logout',methods=['GET'])
+def logout():
+	username= "Guest"
+	titles,images = movies_playing()
+	return render_template('homepage.html',titles=titles,images=images,toast="You have logged out !",username = username,logout = None)
+
 
 
 # Functions used
@@ -180,7 +199,7 @@ def extra_details(titles):
 	for t in new_titles:
 		res = requests.get(url+t,headers= {"Accept":"application/json"}).json()
 		
-		if(res['Ratings']):
+		if('Ratings' in res.keys()):
 			ratings.append(res['Ratings'][0]['Value'])
 		else:
 			ratings.append("N/A")
@@ -241,5 +260,6 @@ def movies_playing():
 	return titles,images
 
 
-if __name__ == '__main__':
+if __name__ == '__main__': 
+	username = "Guest"
 	app.run(debug = True)

@@ -22,8 +22,9 @@
 		{% endif %}
 
 		<div class="bg">
+			
 			{% if username is not none %}	
-				<span id="username-header" class="badge badge-pill badge-success">Logged in : {{username}}</span>
+				<span id="username-header" class="badge badge-pill badge-light">Logged in : {{username}}</span>
 			{% endif %}
 
 			<div class="container">
@@ -34,7 +35,13 @@
 			  		<span class="badge badge-danger" style = "font-size:50px;text-decoration: underline;">Movie Finder</span>
 			  	</div>
 			    <div class="col" style = "margin-top: 30px">
-					  <button type="button" data-toggle="modal" data-target="#loginform" class="btn btn-danger btn-outline-light" style = "margin-left:150px;margin-right: 10px">Log In</button>
+
+			    	 {% if logout is not none %}
+			    	 	 <a href= "{{url_for('logout')}}" type="button" class="btn btn-danger btn-outline-light" style = "margin-left:150px;margin-right: 10px"> Log Out </a>
+			    	 {% else %}
+					  	 <button type="button" data-toggle="modal" data-target="#loginform" class="btn btn-danger btn-outline-light" style = "margin-left:150px;margin-right: 10px">Log In</button>
+					  {% endif %}
+
 					  <a href="{{ url_for('signup') }}" type="button" class="btn btn-danger btn-outline-light">Sign Up</a>
 
 					  <div class="modal fade" id="loginform" tabindex="-1" role="dialog" aria-labelledby="loginform" aria-hidden="true">

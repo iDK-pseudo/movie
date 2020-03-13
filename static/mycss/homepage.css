@@ -37,8 +37,8 @@
 .toast
 { 
 	position: absolute;
-	top:20px;
-	left:20px;
+	top:50px;
+	left:10px;
 	font-size: 22px;
 }
 

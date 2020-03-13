@@ -12,6 +12,11 @@
 
 	<body>
 		<div class="bg-warning">
+			
+			{% if username is not none %}	
+				<span id="username-header" class="badge badge-pill badge-light">Logged in : {{username}}</span>
+			{% endif %}
+				
 				<div class="container">
 				  <div class="row m0-1">
 				  	<div class="col-lg" style = "text-align: center">
