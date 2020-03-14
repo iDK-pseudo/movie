@@ -150,6 +150,7 @@ def signup():
 
 @app.route('/logout',methods=['GET'])
 def logout():
+	global username
 	username= "Guest"
 	titles,images = movies_playing()
 	return render_template('homepage.html',titles=titles,images=images,toast="You have logged out !",username = username,logout = None)
@@ -200,7 +201,10 @@ def extra_details(titles):
 		res = requests.get(url+t,headers= {"Accept":"application/json"}).json()
 		
 		if('Ratings' in res.keys()):
-			ratings.append(res['Ratings'][0]['Value'])
+			if(len(res['Ratings'])>0):
+				ratings.append(res['Ratings'][0]['Value'])
+			else:
+				ratings.append("N/A")
 		else:
 			ratings.append("N/A")
 

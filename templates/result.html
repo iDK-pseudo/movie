@@ -67,9 +67,17 @@
 					      	<div class="col-9">
 					      		<div class="carousel-caption d-none d-md-block">
 					      			<div class="card bg-dark text-white">
-									  <div id = "card-header" class="card-header">
+
+									{% if titles[0]|length > 25 %}
+									  <div id = "card-header" class="card-header" style = "font-size: 20px">
 									    	{{titles[0]}}
 									  </div>
+									{% else %}
+									<div id = "card-header" class="card-header">
+									    	{{titles[0]}}
+									  </div>
+									{% endif %}
+
 									  <div class="card-body">
 									  	{%if overview[0]|length > 300 %}
 									    <p class="card-text">{{overview[0][:300:]+".."}}</p>
@@ -98,9 +106,17 @@
 					      	<div class="col-9">
 					      		<div class="carousel-caption d-none d-md-block">
 					      			<div class="card bg-dark text-white">
-									  <div id = "card-header" class="card-header">
+
+									{% if titles[i]|length > 25 %}
+									<div id = "card-header" class="card-header" style = "font-size: 25px">
+									   	{{titles[i]}}
+									 </div>
+									{% else %}
+									<div id = "card-header" class="card-header">
 									    	{{titles[i]}}
 									  </div>
+									{% endif %}
+
 									  <div class="card-body">
 									    {%if overview[i]|length > 300 %}
 									    <p class="card-text">{{overview[i][:300:]+".."}}</p>
