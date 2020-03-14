@@ -8,12 +8,12 @@ from datetime import datetime
 
 app = Flask(__name__)
 
+app.config.from_pyfile("app.cfg")
+
 db = SQLAlchemy(app)
 
 username = "Guest"
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres+psycopg2://postgres:helloWORLD#@localhost:8000/moviedb'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 class moviedb(db.Model):
 	username = db.Column(db.String,unique = True,primary_key=True)
@@ -78,15 +78,19 @@ def main():
 
 			
 			if(not(name and email and username and password)):
+				username="Guest"
 				return render_template("signup.html",toast = "Kindly fill all the fields !")
 
 			elif(len(password)<8):
+				username="Guest"
 				return render_template("signup.html",toast = "The password cannot be less than 8 Characters !")
 
 			elif(email_exists):
+				username="Guest"
 				return render_template("signup.html",toast = "Hmmm Seems like you have already registered. Please head to Home and Login")
 
 			elif(username_exists):
+				username="Guest"
 				return render_template("signup.html",toast = "This username is already taken. Please try and pick another username.")
 			
 			else:
@@ -95,6 +99,7 @@ def main():
 				db.session.commit()
 				db.session.close()
 
+				username="Guest"
 				return render_template("homepage.html",titles=titles,images=images,toast="You may login now ! "+name,username = username,logout = None)
 
 	else:
