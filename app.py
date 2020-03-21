@@ -10,10 +10,11 @@ app = Flask(__name__)
 
 app.config.from_pyfile("app.cfg")
 
+# SQLALCHEMY_DATABASE_URI='postgres+psycopg2://postgres:helloWORLD#@localhost:8000/moviedb'
+
 db = SQLAlchemy(app)
 
 username = "Guest"
-
 
 class moviedb(db.Model):
 	username = db.Column(db.String,unique = True,primary_key=True)
