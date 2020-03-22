@@ -257,13 +257,26 @@ def movies_playing():
 	titles = list()
 	images = list()
 
-	for i in range(15):
-		# if(len(res['results'][i]['title'])>30):
-		# 	titles.append(res['results'][i]['title'][:25:]+"...")
-		# else:
-		titles.append(res['results'][i]['title'])
-		images.append(res['results'][i]['poster_path'])
-		
+	omdburl = "http://www.omdbapi.com/?i=tt3896198&apikey=5615edda&t="
+
+	i=0
+	no_of_results=15
+
+	while(i<no_of_results):
+		title = res['results'][i]['title'].replace(" ","+")
+
+		url2 = omdburl+title
+
+		omdbres = requests.get(url2,headers= {"Accept":"application/json"}).json()
+
+		if('Error' not in omdbres):
+			titles.append(res['results'][i]['title'])
+			images.append(res['results'][i]['poster_path'])
+			i+=1
+
+		else:
+			i+=1
+			no_of_results+=1
 
 	images = [image_base_url+i for i in images]
 
