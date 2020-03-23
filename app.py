@@ -139,12 +139,30 @@ def result_page(title):
 
 	result = {}
 
+	global username
+
 	if(request.method == "POST"):
 		result = request.form
 		title = str(result['search'])
 
-	rating = extra_details([title])
+		if(title == ''):
+			titles,images = movies_playing()
+
+			if(username == "Guest"):
+				return render_template('homepage.html',titles=titles,images=images,toast="Please try another name !",username = username,logout = None)
+			else:
+				return render_template('homepage.html',titles=titles,images=images,toast="Please try another name !",username = username,logout = 1)
+
+
 	image,title,overview,released,writer,director,ratings,actors = find_movie_data(title)
+
+	if(image == 0 and title == 0 and overview == 0):
+		titles,images = movies_playing()
+
+		if(username == "Guest"):
+			return render_template('homepage.html',titles=titles,images=images,toast="Please try another name !",username = username,logout = None)
+		else:
+			return render_template('homepage.html',titles=titles,images=images,toast="Please try another name !",username = username,logout = 1)
 
 	data = {'image':image,'title':title,'overview':overview,'released':released,'writer':writer,'director':director,'ratings':ratings,'actors':actors}
 	return render_template('result_page.html',data = data,username=username)
@@ -175,6 +193,10 @@ def find_movie_data(title):
 	
 
 	res = requests.get(url,headers= {"Accept":"application/json"}).json()
+	
+	if('Error' in res.keys()):
+		return 0,0,0,0,0,0,0,0
+
 	id = res['imdbID']
 	released = res['Released']
 	writer = res['Writer']
@@ -184,6 +206,9 @@ def find_movie_data(title):
 
 	url =  "https://api.themoviedb.org/3/find/{}?api_key={}&language=en-US&external_source=imdb_id".format(id,api_key)
 	res = requests.get(url,headers= {"Accept":"application/json"}).json()
+
+	if(len(res['movie_results']) == 0):
+		return 0,0,0,0,0,0,0,0
 	
 	image = image_base_url+res['movie_results'][0]['poster_path']
 	overview = res['movie_results'][0]['overview']
@@ -221,7 +246,7 @@ def extra_details(titles):
 
 def find_data(id):
 	api_key = "4b4170d57736cacfad0eaba78f8bed58"
-	for i in range(randint(5,10)):
+	for i in range(randint(1,15)):
 		year = randint(1999,2020)
 
 	url = "https://api.themoviedb.org/3/discover/movie?api_key={}&with_genres={}&sort_by=popularity.desc&year={}".format(api_key,id,year)

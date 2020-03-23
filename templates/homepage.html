@@ -14,7 +14,7 @@
 	<body>
 
 		{% if toast is not none %}
-		<div id = "toast" class="toast bg-danger" role="alert" aria-live="assertive" aria-atomic="true" data-autohide = "true" data-delay="1500">
+		<div id = "toast" class="toast bg-danger" role="alert" aria-live="assertive" aria-atomic="true" data-autohide = "true" data-delay="1500" style = "opacity: 1">
 		  <div class="toast-header">
 		    <strong class="mr-auto">{{toast}}</strong>
 		  </div>
@@ -32,10 +32,11 @@
 			  	<div class="col">
 			  	</div>
 			  	<div class="col-lg">
-			  		<span class="badge badge-danger" style = "font-size:50px;text-decoration: underline;">Movie Toones</span>
+			  		<a href = "{{url_for('main')}}">
+			  			<span class="badge badge-danger" style = "font-size:50px;text-decoration: underline;">Movie Toones</span>
+			  		</a>
 			  	</div>
 			    <div class="col" style = "margin-top: 30px">
-
 			    	 {% if logout is not none %}
 			    	 	 <a href= "{{url_for('logout')}}" type="button" class="btn btn-danger btn-outline-light" style = "margin-left:150px;margin-right: 10px"> Log Out </a>
 			    	 {% else %}
