@@ -6,10 +6,10 @@
 - Could someone **Recommend me a movie** based on my favourite genre?
 Here is a site to satisfy all your needs and quench your thirst once and for all.
 
-**MovieToones is aimed to provide users with details regarding movies in a streamline and hassle-free way. It allows to **
-1. Search for movies
-2. Select one from the Trending Movies
-3. You can even find new movies according to your mood/genre of liking by visiting Suprise Me.
+**MovieToones is aimed to provide users with details regarding movies in a streamline and hassle-free way. You can-**
+- Search for movies
+- Select one from the Trending Movies
+- You can even find new movies according to your mood/genre of liking by visiting Suprise Me.
 
 ### Getting Started
 
