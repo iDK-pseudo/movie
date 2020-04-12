@@ -1,15 +1,15 @@
 # MovieToones
 
-***Have you ever had following questions -***
--What's the **Cast** of a movie you once watched?
--What's the **Plot** or **Rating** of some movie a friend just recommended to you ?
--Could someone **Recommend me a movie** based on my favourite genre?
+***Have you ever had following questions***
+- What's the **Cast** of a movie you once watched?
+- What's the **Plot** or **Rating** of some movie a friend just recommended to you ?
+- Could someone **Recommend me a movie** based on my favourite genre?
 Here is a site to satisfy all your needs and quench your thirst once and for all.
 
-**MovieToones is aimed to provide users with details regarding movies in a streamline and hassle-free way. It allows to 
+**MovieToones is aimed to provide users with details regarding movies in a streamline and hassle-free way. It allows to **
 1. Search for movies
 2. Select one from the Trending Movies
-3. You can even find new movies according to your mood/genre of liking by visiting Suprise Me.***
+3. You can even find new movies according to your mood/genre of liking by visiting Suprise Me.
 
 ### Getting Started
 
