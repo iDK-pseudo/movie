@@ -39,12 +39,12 @@
 			  	</div>
 			    <div class="col" style = "margin-top: 30px">
 			    	 {% if logout is not none %}
-			    	 	 <a href= "{{url_for('logout')}}" type="button" class="btn btn-danger btn-outline-light" style = "margin-left:150px;margin-right: 10px"> Log Out </a>
+			    	 	 <a href= "{{url_for('logout')}}" type="button" class="btn btn-danger btn-outline-light nav-items" style = "margin-left:150px;margin-right: 10px"> Log Out </a>
 			    	 {% else %}
-					  	 <button type="button" data-toggle="modal" data-target="#loginform" class="btn btn-danger btn-outline-light" style = "margin-left:150px;margin-right: 10px">Log In</button>
+					  	 <button type="button" data-toggle="modal" data-target="#loginform" class="btn btn-danger btn-outline-light nav-items" style = "margin-left:150px;margin-right: 10px">Log In</button>
 					  {% endif %}
 
-					  <a href="{{ url_for('signup') }}" type="button" class="btn btn-danger btn-outline-light">Sign Up</a>
+					  <a href="{{ url_for('signup') }}" type="button" class="btn btn-danger btn-outline-light nav-items">Sign Up</a>
 
 					  <div class="modal fade" id="loginform" tabindex="-1" role="dialog" aria-labelledby="loginform" aria-hidden="true">
 						  <div class="modal-dialog" role="document">
@@ -79,15 +79,15 @@
 				  <div class="collapse navbar-collapse" id="navbarNav">
 				    <ul class="navbar-nav">
 				      <li class="nav-item active">
-				        <a class="btn btn-success btn-outline-light"  href="{{ url_for('discover') }}" style = "margin-right: 5px"> Suprise Me ! </a>
+				        <a class="btn btn-success btn-outline-light nav-items"  href="{{ url_for('discover') }}" style = "margin-right: 5px"> Suprise Me ! </a>
 				      </li>
 				      <li class="nav-item">
-				         <a href="#" class="btn btn-success btn-outline-light" role="button">About</a>
+				         <a href="#" class="btn btn-success btn-outline-light nav-items" role="button">About</a>
 				      </li>
 				    </ul>
-				    <form method = 'POST' action = "{{url_for('result_page',title = 'none')}}" class="form-inline my-2 my-lg-0" style = "margin-left: 580px">
+				    <form method = 'POST' action = "{{url_for('result_page',title = 'none')}}" class="form-inline my-2 my-lg-0" style = "margin-left: 540px">
 				      <input class="form-control mr-sm-2" type="text" name="search" aria-label="Search">
-				      <button class="btn btn-light btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+				      <button class="btn btn-light btn-outline-danger my-2 my-sm-0 nav-items" type="submit">Search</button>
 				    </form>
 				  </div>
 				</nav>
@@ -111,7 +111,7 @@
 
 				<div class ="row m3-3">
 					<div class="col-xl">
-						<span class="badge badge-light" style = "font-size: 25px;margin-bottom: 18px;">“Something you wouldn't recognize. It’s called love.” - Spirited Away </span>
+						<span class="badge badge-light text-wrap" style = "font-size: 25px;margin-bottom: 18px;">“Something you wouldn't recognize. It’s called love.” - Spirited Away </span>
 					</div>
 				</div>
 			</div>
