@@ -42,9 +42,8 @@
 			    	 	 <a href= "{{url_for('logout')}}" type="button" class="btn btn-danger btn-outline-light nav-items" style = "margin-left:150px;margin-right: 10px"> Log Out </a>
 			    	 {% else %}
 					  	 <button type="button" data-toggle="modal" data-target="#loginform" class="btn btn-danger btn-outline-light nav-items" style = "margin-left:150px;margin-right: 10px">Log In</button>
+					  	 <a href="{{ url_for('signup') }}" type="button" class="btn btn-danger btn-outline-light nav-items">Sign Up</a>
 					  {% endif %}
-
-					  <a href="{{ url_for('signup') }}" type="button" class="btn btn-danger btn-outline-light nav-items">Sign Up</a>
 
 					  <div class="modal fade" id="loginform" tabindex="-1" role="dialog" aria-labelledby="loginform" aria-hidden="true">
 						  <div class="modal-dialog" role="document">
